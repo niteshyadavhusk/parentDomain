@@ -40,9 +40,12 @@ function App() {
   };
 
   const logout = () => {
+    console.log("Logout button clicked");
     if (newTabRef.current) {
       console.log('Sending logout message to new tab');
       newTabRef.current.postMessage('logout', 'https://childdomain.onrender.com/');
+    } else {
+      console.log('New tab reference is null, cannot send message');
     }
   };
 
