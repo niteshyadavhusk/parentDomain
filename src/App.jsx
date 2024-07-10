@@ -56,7 +56,7 @@ function App() {
   //   alert(imageUri)
   // }, [imageUri])
 
-  const [imageUri, setImageUri] = useState(null);
+  const [imageUri, setImageUri] = useState('https://tse1.mm.bing.net/th?id=OIP.7JVo-fa_E9WVVkFwa_eO6gHaD6&pid=Api&P=0&h=180');
 
   useEffect(() => {
     const receiveMessage = (event) => {
