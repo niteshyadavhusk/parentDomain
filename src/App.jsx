@@ -57,7 +57,7 @@ function App() {
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
       const message = JSON.parse(event.data);
-      alert(message)
+      
       if (message.type === 'image') {
         setImageUri(message.data);
       }
@@ -68,20 +68,20 @@ function App() {
     return () => {
       window.removeEventListener('message', receiveMessage);
     };
-  }, []);
+  }, [imageUri]);
 
-  useEffect(() => {
-    setLocalImg(imageUri)
-    alert(imageUri)
-  }, [imageUri])
+  // useEffect(() => {
+  //   setLocalImg(imageUri)
+  //   alert(imageUri)
+  // }, [imageUri])
 
   const sendMessage = () => {
     window.ReactNativeWebView.postMessage('openCamera!');
   };
 
-  const handleImageClick = () => {
-    sendMessage('navigateToHome'); // Example: Send message to navigate to home section
-  };
+  // const handleImageClick = () => {
+  //   sendMessage('navigateToHome'); // Example: Send message to navigate to home section
+  // };
 
   return (
     <>
@@ -95,7 +95,7 @@ function App() {
       <div>
         Nitesh
         </div>   
-     {localImg ? <img src={localImg} alt="localImg" /> : <h3>No Image</h3>}
+     {imageUri ? <img src={imageUri} alt="localImg" /> : <h3>No Image</h3>}
     </>
   )
 }
