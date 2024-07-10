@@ -62,6 +62,7 @@ function App() {
     const receiveMessage = (event) => {
       alert('hello')
       const message = JSON.parse(event.data);
+      alert(message)
       if (message.type === 'image') {
         setImageUri(message.data);
       }
@@ -91,10 +92,11 @@ function App() {
           <img src={imageUri} alt="Captured" style={{ maxWidth: '100%' }} />
         </div>
       ) : (
-        <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
+       <h2>no image</h2>
+      )}
+       <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
           Open Camera
         </button>
-      )}
     </div>
     </>
   )
