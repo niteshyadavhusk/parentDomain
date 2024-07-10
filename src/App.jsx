@@ -94,12 +94,8 @@ function App() {
       </div>
       <div>
         Nitesh
-        </div>      {localImg && (
-        <div onClick={handleImageClick} style={{ width: '200px', height: '200px' }}>
-          <h2>Captured Image:</h2>
-          <img src={localImg} alt="Captured" />
-        </div>
-      )}
+        </div>   
+     {localImg ? <img src={localImg} alt="localImg" /> : <h3>No Image</h3>}
     </>
   )
 }
