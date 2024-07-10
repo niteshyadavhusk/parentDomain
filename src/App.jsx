@@ -72,6 +72,7 @@ function App() {
 
   useEffect(() => {
     setLocalImg(imageUri)
+    alert(imageUri)
   }, [imageUri])
 
   const sendMessage = () => {
