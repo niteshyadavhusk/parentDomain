@@ -49,10 +49,10 @@ function App() {
   //   }
   // };
 
-
+  const [imageUri, setImageUri] = useState(null);
 
   useEffect(() => {
-    const [imageUri, setImageUri] = useState(null);
+   
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
       const message = JSON.parse(event.data);
