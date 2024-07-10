@@ -60,6 +60,7 @@ function App() {
 
   useEffect(() => {
     const receiveMessage = (event) => {
+      alert('hello')
       const message = JSON.parse(event.data);
       if (message.type === 'image') {
         setImageUri(message.data);
