@@ -50,10 +50,10 @@ function App() {
   // };
 
   const [imageUri, setImageUri] = useState(null);
-  const[localImg,setLocalImg]=useState(imageUri)
+  const [localImg, setLocalImg] = useState(imageUri)
 
   useEffect(() => {
-   
+
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
       const message = JSON.parse(event.data);
@@ -69,9 +69,9 @@ function App() {
     };
   }, []);
 
-  useEffect(()=>{
-   setLocalImg(imageUri)
-  },[imageUri])
+  useEffect(() => {
+    setLocalImg(imageUri)
+  }, [imageUri])
 
   const sendMessage = () => {
     window.ReactNativeWebView.postMessage('openCamera!');
@@ -90,8 +90,10 @@ function App() {
         <h1>React.js WebView Bridge</h1>
         <button onClick={sendMessage}>Send Message to WebView</button>
       </div>
-      {localImg && (
-        <div onClick={handleImageClick} style={{width:'200px',height:'200px'}}>
+      <div>
+        Nitesh
+        </div>      {localImg && (
+        <div onClick={handleImageClick} style={{ width: '200px', height: '200px' }}>
           <h2>Captured Image:</h2>
           <img src={localImg} alt="Captured" />
         </div>
