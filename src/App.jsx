@@ -57,6 +57,7 @@ function App() {
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
       const message = JSON.parse(event.data);
+      alert(message)
       if (message.type === 'image') {
         setImageUri(message.data);
       }
