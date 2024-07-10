@@ -52,9 +52,13 @@ function App() {
 
 
   useEffect(() => {
+    const [imageUri, setImageUri] = useState(null);
     const receiveMessage = (event) => {
       if (event.origin !== window.location.origin) return;
-      alert('Message from WebView: ' + event.data);
+      const message = JSON.parse(event.data);
+      if (message.type === 'image') {
+        setImageUri(message.data);
+      }
     };
 
     window.addEventListener('message', receiveMessage);
@@ -65,7 +69,11 @@ function App() {
   }, []);
 
   const sendMessage = () => {
-    window.ReactNativeWebView.postMessage('Hello from React.js!');
+    window.ReactNativeWebView.postMessage('openCamera!');
+  };
+
+  const handleImageClick = () => {
+    sendMessage('navigateToHome'); // Example: Send message to navigate to home section
   };
 
   return (
@@ -77,6 +85,12 @@ function App() {
         <h1>React.js WebView Bridge</h1>
         <button onClick={sendMessage}>Send Message to WebView</button>
       </div>
+      {imageUri && (
+        <div onClick={handleImageClick}>
+          <h2>Captured Image:</h2>
+          <img src={imageUri} alt="Captured" />
+        </div>
+      )}
     </>
   )
 }
