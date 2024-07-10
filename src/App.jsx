@@ -49,15 +49,18 @@ function App() {
   //   }
   // };
 
+ 
+
+  // useEffect(() => {
+  //   setLocalImg(imageUri)
+  //   alert(imageUri)
+  // }, [imageUri])
+
   const [imageUri, setImageUri] = useState(null);
-  const [localImg, setLocalImg] = useState(imageUri)
 
   useEffect(() => {
-
     const receiveMessage = (event) => {
-      if (event.origin !== window.location.origin) return;
       const message = JSON.parse(event.data);
-      
       if (message.type === 'image') {
         setImageUri(message.data);
       }
@@ -68,16 +71,7 @@ function App() {
     return () => {
       window.removeEventListener('message', receiveMessage);
     };
-  }, [imageUri]);
-
-  // useEffect(() => {
-  //   setLocalImg(imageUri)
-  //   alert(imageUri)
-  // }, [imageUri])
-
-  const sendMessage = () => {
-    window.ReactNativeWebView.postMessage('openCamera!');
-  };
+  }, []);
 
   // const handleImageClick = () => {
   //   sendMessage('navigateToHome'); // Example: Send message to navigate to home section
@@ -88,14 +82,19 @@ function App() {
       {/* <button id="navigateButton" onClick={openNewTab}>Open New Tab</button>
       <button id="logoutButton" onClick={logout}>Logout</button> */}
 
-      <div>
-        <h1>React.js WebView Bridge</h1>
-        <button onClick={sendMessage}>Send Message to WebView</button>
-      </div>
-      <div>
-        Nitesh
-        </div>   
-     {imageUri ? <img src={imageUri} alt="localImg" /> : <h3>No Image</h3>}
+<div>
+      <h1>React.js WebView Bridge</h1>
+      {imageUri ? (
+        <div>
+          <h3>Image Received:</h3>
+          <img src={imageUri} alt="Captured" style={{ maxWidth: '100%' }} />
+        </div>
+      ) : (
+        <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
+          Open Camera
+        </button>
+      )}
+    </div>
     </>
   )
 }
