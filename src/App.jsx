@@ -98,6 +98,11 @@ function App() {
        <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
           Open Camera
         </button>
+        
+
+        <div>
+          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation')}></button>
+        </div>
     </div>
     </>
   )
