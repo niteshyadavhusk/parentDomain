@@ -57,17 +57,23 @@ function App() {
   // }, [imageUri])
 
   const [imageUri, setImageUri] = useState('https://tse1.mm.bing.net/th?id=OIP.7JVo-fa_E9WVVkFwa_eO6gHaD6&pid=Api&P=0&h=180');
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
     const receiveMessage = (event) => {
-     // alert('hello')
-      const message = JSON.parse(event.data);
-      //alert(message)
-      if (message.type === 'image') {
-        setImageUri(message.data);
-        alert(message.data)
+      try {
+        const message = JSON.parse(event.data);
+        if (message.type === 'image') {
+          setImageUri(message.data);
+          alert('Image received');
+        } else if (message.type === 'location') {
+          setLocation(message.data);
+          alert('Location received');
+        }
+      } catch (error) {
+        console.error('Error parsing message:', error);
       }
-    };
+    }
 
     window.addEventListener('message', receiveMessage);
 
@@ -101,9 +107,16 @@ function App() {
         
 
         <div>
-          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation')}>getLocation</button>
+          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation!')}>getLocation</button>
         </div>
     </div>
+    {location && (
+          <div>
+            <h3>Location Received:</h3>
+            <p>Latitude: {location.latitude}</p>
+            <p>Longitude: {location.longitude}</p>
+          </div>
+        )}
     </>
   )
 }
