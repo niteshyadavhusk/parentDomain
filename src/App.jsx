@@ -101,7 +101,7 @@ function App() {
         
 
         <div>
-          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation')}></button>
+          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation')}>getLocation</button>
         </div>
     </div>
     </>
