@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 export const Form = () => {
   const [imageUri, setImageUri] = useState('https://tse1.mm.bing.net/th?id=OIP.7JVo-fa_E9WVVkFwa_eO6gHaD6&pid=Api&P=0&h=180');
   const [location, setLocation] = useState(null);
-  const [isNative, setIsNative] = useState('');
+  const [isNative, setIsNative] = useState(false);
   const [web, setWeb] = useState(false)
 
 
@@ -12,7 +12,7 @@ export const Form = () => {
       try {
         const message = JSON.parse(event.data);
         if (message.type === 'native') {
-          setIsNative("native");
+          setIsNative(true);
           alert('App opened in React Native WebView');
         } else if (message.type === 'image') {
           setImageUri(message.data);
@@ -32,18 +32,18 @@ export const Form = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (isNative === "native") {
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (isNative === "native") {
        
-        setWeb(true);
-      } else {
-        setWeb(false);
-      }
-    }, 2000); // 1 second delay
+  //       setWeb(true);
+  //     } else {
+  //       setWeb(false);
+  //     }
+  //   }, 2000); // 1 second delay
 
-    return () => clearTimeout(timer); // Cleanup the timer
-  }, [isNative]);
+  //   return () => clearTimeout(timer); // Cleanup the timer
+  // }, [isNative]);
 
   console.log(isNative)
   return (
@@ -51,7 +51,7 @@ export const Form = () => {
       <h2>Husk Power System</h2>
 
       <form>
-        {web ? <div style={{ display: 'flex', flexDirection: "column" }}>
+        {isNative ? <div style={{ display: 'flex', flexDirection: "column" }}>
           <div style={{ width: "200px", height: '200px', border: '1px solid blue', borderRadius: '50%' }}>
             <img src={imageUri} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
           </div>
