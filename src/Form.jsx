@@ -40,7 +40,7 @@ export const Form = () => {
       } else {
         setWeb(false);
       }
-    }, 1000); // 1 second delay
+    }, 2000); // 1 second delay
 
     return () => clearTimeout(timer); // Cleanup the timer
   }, [isNative]);
