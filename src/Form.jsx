@@ -9,6 +9,7 @@ export const Form = () => {
   useEffect(() => {
     const receiveMessage = (event) => {
       try {
+        alert(event)
         const message = JSON.parse(event.data);
         if (message.type === 'image') {
           setImageUri(message.data)
