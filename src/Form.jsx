@@ -38,7 +38,7 @@ export const Form = () => {
     } else {
       setWeb(false)
     }
-  },[] )
+  },[isNative] )
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
       <h2>Husk Power System</h2>
