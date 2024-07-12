@@ -9,6 +9,7 @@ export const Form = () => {
   useEffect(() => {
     const receiveMessage = (event) => {
       try {
+        const message = JSON.parse(event.data);
         if (message.type === 'native') {
           setIsNative(true);
           alert('App opened in React Native WebView');
