@@ -33,12 +33,19 @@ export const Form = () => {
   }, []);
 
   useEffect(() => {
-    if (isNative === "native") {
-      setWeb(true)
-    } else {
-      setWeb(false)
-    }
-  },[isNative] )
+    const timer = setTimeout(() => {
+      if (isNative === "native") {
+       
+        setWeb(true);
+      } else {
+        setWeb(false);
+      }
+    }, 1000); // 1 second delay
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, [isNative]);
+
+  console.log(isNative)
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
       <h2>Husk Power System</h2>
