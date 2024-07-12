@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
 import Cookies from 'js-cookie';
+import { Form } from './Form';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -91,7 +92,7 @@ function App() {
       {/* <button id="navigateButton" onClick={openNewTab}>Open New Tab</button>
       <button id="logoutButton" onClick={logout}>Logout</button> */}
 
-<div>
+{/* <div>
       <h1>React.js WebView Bridge</h1>
       {imageUri ? (
         <div>
@@ -116,7 +117,9 @@ function App() {
             <p>Latitude: {location.latitude}</p>
             <p>Longitude: {location.longitude}</p>
           </div>
-        )}
+        )} */}
+
+        <Form/>
     </>
   )
 }
