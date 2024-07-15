@@ -41,8 +41,6 @@ export const Form = () => {
         } else if (message.type === 'location') {
           setLocation(message.data);
           alert(message.data);
-        }else{
-          return
         }
       } catch (error) {
         console.error('Error parsing message:', error);
@@ -67,14 +65,15 @@ export const Form = () => {
 
   //   return () => clearTimeout(timer); // Cleanup the timer
   // }, [isNative]);
-// const sendMessageNagive= async()=>{
-//     await 
-// }
+const sendMessageNagive= async()=>{
+    await window.ReactNativeWebView.postMessage('openCamera!')
+}
 
-const sendMessageLocation= async()=>{
+const sendMessageLocation= async(e)=>{
+  e.preventDefault();
   await window.ReactNativeWebView.postMessage('getLocation!')
 }
-  console.log(isNative)
+ 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
       <h2>Husk Power System</h2>
@@ -85,7 +84,7 @@ const sendMessageLocation= async()=>{
             <img src={imageUri} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
           </div>
           <br></br>
-          <button onClick={()=>window.ReactNativeWebView.postMessage('openCamera!')} >upload Img</button>
+          <button onClick={sendMessageNagive} >upload Img</button>
 
         </div> 
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
@@ -95,11 +94,11 @@ const sendMessageLocation= async()=>{
           <label htmlFor='Area'>City</label>
           <input type='text' name='Area' id='Area' />
           <label htmlFor='Latitude'>Latitude</label>
-          <input type="number"  name='Latitude' value={location ? location.latitude : "getLatutue"} />
+          <input type="number" placeholder='Latitude' name='Latitude' value={location ? location.latitude : "getLatutue"} />
           <label htmlFor='Longitude'>Longitude</label>
-          <input type="number"  name='Longitude' value={location ? location.longitude : "getlongitude"} />
+          <input type="number" placeholder='Longitude' name='Longitude' value={location ? location.longitude : "getlongitude"} />
           <br />
-          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation!')}>getLocation</button>
+          <button onClick={sendMessageLocation}>getLocation</button>
         </div>
         <br />
         <button type='submit' name='Submit'>Submit</button>
