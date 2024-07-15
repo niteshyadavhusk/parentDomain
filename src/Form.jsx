@@ -87,11 +87,13 @@ export const Form = () => {
   const sendMessageLocation = async (e) => {
     e.preventDefault();
     await window.ReactNativeWebView.postMessage('getLocation!')
+
+
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const dataObject = {
       image: imageUri,
       location: location,
@@ -102,37 +104,37 @@ export const Form = () => {
     alert(JSON.stringify(dataObject));
   };
 
-console.log(userDetails.name)
+  console.log(userDetails.name)
 
-return (
-  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
-    <h2>Husk Power System</h2>
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
+      <h2>Husk Power System</h2>
 
-    <form>
-      <div style={{ display: 'flex', flexDirection: "column" }}>
-        <div style={{ width: "200px", height: '200px', border: '1px solid blue', borderRadius: '50%' }}>
-          <img src={imageUri} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+      <form>
+        <div style={{ display: 'flex', flexDirection: "column" }}>
+          <div style={{ width: "200px", height: '200px', border: '1px solid blue', borderRadius: '50%' }}>
+            <img src={imageUri} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <br></br>
+          <button onClick={sendMessageNagive} >upload Img</button>
+
         </div>
-        <br></br>
-        <button onClick={sendMessageNagive} >upload Img</button>
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
+          <label htmlFor='name'>Name</label>
+          <input type='text' name='name' id='name' value={userDetails.name} onChange={handleChangedata} />
 
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
-        <label htmlFor='name'>Name</label>
-        <input type='text' name='name' id='name' value={userDetails.name} onChange={handleChangedata} />
-
-        <label htmlFor='Area'>City</label>
-        <input type='text' name='city' id='Area' value={userDetails.city} onChange={handleChangedata} />
-        <label htmlFor='Latitude'>Latitude</label>
-        <input type="number" placeholder='Latitude' name='Latitude' value={location ? location.latitude : "getLatutue"} readOnly />
-        <label htmlFor='Longitude'>Longitude</label>
-        <input type="number" placeholder='Longitude' name='Longitude' value={location ? location.longitude : "getlongitude"} readOnly />
+          <label htmlFor='Area'>City</label>
+          <input type='text' name='city' id='Area' value={userDetails.city} onChange={handleChangedata} />
+          <label htmlFor='Latitude'>Latitude</label>
+          <input type="number" placeholder='Latitude' name='Latitude' value={location ? location.latitude : "getLatutue"} readOnly />
+          <label htmlFor='Longitude'>Longitude</label>
+          <input type="number" placeholder='Longitude' name='Longitude' value={location ? location.longitude : "getlongitude"} readOnly />
+          <br />
+          <button onClick={sendMessageLocation}>getLocation</button>
+        </div>
         <br />
-        <button onClick={sendMessageLocation}>getLocation</button>
-      </div>
-      <br />
-      <button type='submit' name='Submit' >Submit</button>
-    </form>
-  </div>
-)
+        <button type='submit' name='Submit' onClick={handleSubmit} >Submit</button>
+      </form>
+    </div>
+  )
 }
