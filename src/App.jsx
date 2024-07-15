@@ -3,7 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
 import Cookies from 'js-cookie';
-import { Form } from './Form';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Form } from './Components/Form';
+import { SpeechToText } from './Components/SpeechToText';
+import { Nav } from './Components/Nav';
+
+
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -88,39 +94,46 @@ function App() {
   // };
 
   return (
-    <>
-      {/* <button id="navigateButton" onClick={openNewTab}>Open New Tab</button>
-      <button id="logoutButton" onClick={logout}>Logout</button> */}
+//     <>
+//       {/* <button id="navigateButton" onClick={openNewTab}>Open New Tab</button>
+//       <button id="logoutButton" onClick={logout}>Logout</button> */}
 
-{/* <div>
-      <h1>React.js WebView Bridge</h1>
-      {imageUri ? (
-        <div>
-          <h3>Image Received:</h3>
-          <img src={imageUri} alt="Captured" style={{ maxWidth: '100%' }} />
-        </div>
-      ) : (
-       <h2>no image</h2>
-      )}
-       <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
-          Open Camera
-        </button>
+// {/* <div>
+//       <h1>React.js WebView Bridge</h1>
+//       {imageUri ? (
+//         <div>
+//           <h3>Image Received:</h3>
+//           <img src={imageUri} alt="Captured" style={{ maxWidth: '100%' }} />
+//         </div>
+//       ) : (
+//        <h2>no image</h2>
+//       )}
+//        <button onClick={() => window.ReactNativeWebView.postMessage('openCamera!')}>
+//           Open Camera
+//         </button>
         
 
-        <div>
-          <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation!')}>getLocation</button>
-        </div>
-    </div>
-    {location && (
-          <div>
-            <h3>Location Received:</h3>
-            <p>Latitude: {location.latitude}</p>
-            <p>Longitude: {location.longitude}</p>
-          </div>
-        )} */}
+//         <div>
+//           <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation!')}>getLocation</button>
+//         </div>
+//     </div>
+//     {location && (
+//           <div>
+//             <h3>Location Received:</h3>
+//             <p>Latitude: {location.latitude}</p>
+//             <p>Longitude: {location.longitude}</p>
+//           </div>
+//         )} */}
 
-        <Form/>
-    </>
+       
+//     </>
+
+<BrowserRouter>
+<Routes>
+  <Route path='/' element={<Form/>}/>
+  <Route path='/speechTotext' element={<SpeechToText/>}/>
+</Routes>
+</BrowserRouter>
   )
 }
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Nav } from './Nav';
+
 
 export const Form = () => {
   const [imageUri, setImageUri] = useState(
@@ -107,6 +109,8 @@ export const Form = () => {
   console.log(userDetails.name)
 
   return (
+    <>
+    <Nav/>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', flexDirection: 'column' }}>
       <h2>Husk Power System</h2>
 
@@ -136,5 +140,6 @@ export const Form = () => {
         <button type='submit' name='Submit' onClick={handleSubmit} >Submit</button>
       </form>
     </div>
+    </>
   )
 }
