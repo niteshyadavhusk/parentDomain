@@ -41,6 +41,8 @@ export const Form = () => {
         } else if (message.type === 'location') {
           setLocation(message.data);
           alert(message.data);
+        }else{
+          return
         }
       } catch (error) {
         console.error('Error parsing message:', error);
@@ -93,9 +95,9 @@ const sendMessageLocation= async()=>{
           <label htmlFor='Area'>City</label>
           <input type='text' name='Area' id='Area' />
           <label htmlFor='Latitude'>Latitude</label>
-          <input type="number" placeholder='Latitude' name='Latitude' value={location ? location.latitude : "getLatutue"} />
+          <input type="number"  name='Latitude' value={location ? location.latitude : "getLatutue"} />
           <label htmlFor='Longitude'>Longitude</label>
-          <input type="number" placeholder='Longitude' name='Longitude' value={location ? location.longitude : "getlongitude"} />
+          <input type="number"  name='Longitude' value={location ? location.longitude : "getlongitude"} />
           <br />
           <button onClick={()=>window.ReactNativeWebView.postMessage('getLocation!')}>getLocation</button>
         </div>
