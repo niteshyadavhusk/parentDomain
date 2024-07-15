@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 export const Form = () => {
-  const [imageUri, setImageUri] = useState('https://tse1.mm.bing.net/th?id=OIP.7JVo-fa_E9WVVkFwa_eO6gHaD6&pid=Api&P=0&h=180');
-  const [location, setLocation] = useState(null);
+  const [imageUri, setImageUri] = useState(
+    localStorage.getItem('imageUri') ||
+      'https://tse1.mm.bing.net/th?id=OIP.7JVo-fa_E9WVVkFwa_eO6gHaD6&pid=Api&P=0&h=180'
+  );
+  const [location, setLocation] = useState(
+    JSON.parse(localStorage.getItem('location')) || null
+  );
+
   const [isNative, setIsNative] = useState(false);
   // const [web, setWeb] = useState(false)
   // const [environment, setEnvironment] = useState('');
@@ -29,10 +35,7 @@ export const Form = () => {
     const receiveMessage = (event) => {
       try {
         const message = JSON.parse(event.data);
-        if (message.type === 'native') {
-         // setIsNative(true);
-          alert('App opened in React Native WebView');
-        } else if (message.type === 'image') {
+         if (message.type === 'image') {
           setImageUri(message.data);
 
         } else if (message.type === 'location') {
