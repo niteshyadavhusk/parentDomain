@@ -90,14 +90,17 @@ export const Nav = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center"> <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }} > <Typography textAlign="center">Home</Typography></Link> </Typography> 
                 </MenuItem>
-              ))}
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center"> <Link to={'/Speechtotext'} style={{ textDecoration: 'none', color: 'inherit' }} > <Typography textAlign="center">SpeechToText</Typography></Link></Typography>  
+                </MenuItem>
+              
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -105,7 +108,7 @@ export const Nav = () => {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
