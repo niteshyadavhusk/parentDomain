@@ -28,26 +28,7 @@ export const Form = () => {
       [name]: value
     }));
   }
-  // const [web, setWeb] = useState(false)
-  // const [environment, setEnvironment] = useState('');
-
-  // useEffect(() => {
-  //   function detectEnvironment() {
-  //     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  //     if (/iPhone|iPad|iPod|Android/i.test(userAgent)) {
-  //       // Assuming React Native WebView will run on mobile devices
-  //       return 'ReactNativeWebView';
-  //     } else if (/Chrome/.test(userAgent)) {
-  //       return 'Chrome';
-  //     } else {
-  //       return 'OtherBrowser';
-  //     }
-  //   }
-
-  //   const env = detectEnvironment();
-  //   setEnvironment(env);
-  //   console.log('Environment:', env);
-  // }, []);
+ 
 
   useEffect(() => {
     const receiveMessage = (event) => {
