@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Nav } from './Nav';
+import { Button } from '@mui/material';
 
 
 export const Form = () => {
@@ -102,8 +103,8 @@ export const Form = () => {
       name: userDetails.name,
       city: userDetails.city
     };
-    console.log(dataObject);
-    alert(JSON.stringify(dataObject));
+    // console.log(dataObject);
+    // alert(JSON.stringify(dataObject));
   };
 
   console.log(userDetails.name)
@@ -134,10 +135,10 @@ export const Form = () => {
           <label htmlFor='Longitude'>Longitude</label>
           <input type="number" placeholder='Longitude' name='Longitude' value={location ? location.longitude : "getlongitude"} readOnly />
           <br />
-          <button onClick={sendMessageLocation}>getLocation</button>
+          <Button onClick={sendMessageLocation}>getLocation</Button>
         </div>
         <br />
-        <button type='submit' name='Submit' onClick={handleSubmit} >Submit</button>
+        <Button  variant="contained" type='submit' name='Submit' onClick={handleSubmit} >Submit</Button>
       </form>
     </div>
     </>
