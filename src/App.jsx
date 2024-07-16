@@ -71,7 +71,7 @@ function App() {
 
 <BrowserRouter>
 <Routes>
- {environment==="crome" ? <Route path='/' element={<Form/>}/>:<Route path='/' element={<WebViewForm/>}/>}
+ {environment==="Chrome" ? <Route path='/' element={<WebViewForm/>}/>:<Route path='/' element={<Form/>}/>}
   <Route path='/speechTotext' element={<SpeechToText/>}/>
 </Routes>
 </BrowserRouter>
