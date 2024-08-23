@@ -32,11 +32,10 @@ export const SingUp = () => {
             console.log(response.data);
             if (response.data.success === true) {
                 console.log(response.data.data.token)
-                alert("Login Successfull");
+                window.ReactNativeWebView.postMessage('Alert!')
                 localStorage.setItem('token', response.data.data.token)
-                window.ReactNativeWebView.postMessage('alert!')
-
-
+                alert("Login Successfull"); 
+              
             } else {
                 alert("out side box")
             }

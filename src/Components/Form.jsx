@@ -52,18 +52,7 @@ export const Form = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     if (isNative === "native") {
-
-  //       setWeb(true);
-  //     } else {
-  //       setWeb(false);
-  //     }
-  //   }, 2000); // 1 second delay
-
-  //   return () => clearTimeout(timer); // Cleanup the timer
-  // }, [isNative]);
+  
   const sendMessageNagive = async () => {
     await window.ReactNativeWebView.postMessage('openCamera!')
   }

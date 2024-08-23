@@ -74,7 +74,7 @@ function App() {
 
 <BrowserRouter>
 <Routes>
- {environment==="Chrome" ? <Route path='/' element={<SingUp/>}/>:<Route path='/' element={<SingUp/>}/>}
+ {environment==="Chrome" ? <Route path='/' element={<SingUp/>}/>:<Route path='/' element={<Nav/>}/>}
   <Route path='/speechTotext' element={<SpeechToText/>}/>
 </Routes>
 </BrowserRouter>
