@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LoginPost } from '../Service/UserService';
+import '../style/login.css'
 
 export const SingUp = () => {
     const [logindata, setLogindata] = useState({
