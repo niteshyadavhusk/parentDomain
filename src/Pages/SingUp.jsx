@@ -16,51 +16,68 @@ export const SingUp = () => {
     };
 
     const handleLogin = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         console.log(logindata);
         sentRequest()
     };
 
-    const sentRequest=()=>{
-       const  data={
-            userId:logindata.username,
-            password:logindata.password
+    const sentRequest = () => {
+        const data = {
+            userId: logindata.username,
+            password: logindata.password
         }
-      
+
         LoginPost(data).then((response) => {
             console.log(response.data);
+            if (response.data.success === true) {
+                console.log(response.data.data.token)
+                alert("Login Successfull");
+                localStorage.setItem('token', response.data.data.token)
+
+
+            } else {
+                alert("out side box")
+            }
         })
     }
 
     return (
         <div className='main-login-div'>
             <h3>Husk Power Systems</h3>
-            <br />
+
             <h5>SingUp</h5>
-            <form>
-                <label htmlFor="id">User Id:</label>
-                <br />
-                <input 
-                    type="text" 
-                    id="id" 
-                    name="username" 
-                    required 
-                    placeholder='Please enter your user id' 
-                    value={logindata.username} 
-                    onChange={handleChange}
-                /><br />
-                <label htmlFor="password">Password:</label><br />
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    value={logindata.password} 
-                    required 
-                    placeholder='Please enter your husk neuron password' 
-                    onChange={handleChange}
-                /><br />
+            <div className='formDiv'>
+                <div>
+                    <label htmlFor="id">User Id:</label>
+                    <br />
+                    <input
+                        type="text"
+                        id="id"
+                        name="username"
+                        required
+                        placeholder='Please enter your user id'
+                        value={logindata.username}
+                        onChange={handleChange}
+                    /><br />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label><br />
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={logindata.password}
+                        required
+                        placeholder='Please enter your husk neuron password'
+                        onChange={handleChange}
+                    />
+                </div>
+                <br></br>
+               
+                <div>
                 <button onClick={handleLogin}>Login</button>
-            </form>
+                </div>
+            </div>
         </div>
     );
 };
