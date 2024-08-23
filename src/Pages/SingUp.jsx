@@ -32,7 +32,7 @@ export const SingUp = () => {
     }
 
     return (
-        <div>
+        <div className='main-login-div'>
             <h3>Husk Power Systems</h3>
             <br />
             <h5>SingUp</h5>
