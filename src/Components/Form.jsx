@@ -71,8 +71,6 @@ export const Form = () => {
   const sendMessageLocation = async (e) => {
     e.preventDefault();
     await window.ReactNativeWebView.postMessage('getLocation!')
-
-
   }
 
   const handleSubmit = (e) => {

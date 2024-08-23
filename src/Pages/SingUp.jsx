@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LoginPost } from '../Service/UserService';
 import '../style/login.css'
+import { async } from 'regenerator-runtime';
 
 export const SingUp = () => {
     const [logindata, setLogindata] = useState({
@@ -21,18 +22,19 @@ export const SingUp = () => {
         sentRequest()
     };
 
-    const sentRequest = () => {
+    const sentRequest = async () => {
         const data = {
             userId: logindata.username,
             password: logindata.password
         }
 
-        LoginPost(data).then((response) => {
+        await LoginPost(data).then((response) => {
             console.log(response.data);
             if (response.data.success === true) {
                 console.log(response.data.data.token)
                 alert("Login Successfull");
                 localStorage.setItem('token', response.data.data.token)
+                window.ReactNativeWebView.postMessage('alert!')
 
 
             } else {
@@ -73,9 +75,9 @@ export const SingUp = () => {
                     />
                 </div>
                 <br></br>
-               
+
                 <div>
-                <button onClick={handleLogin}>Login</button>
+                    <button onClick={handleLogin}>Login</button>
                 </div>
             </div>
         </div>
