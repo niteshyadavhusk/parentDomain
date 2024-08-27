@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LoginPost } from '../Service/UserService';
 import '../style/login.css'
 import { async } from 'regenerator-runtime';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SingUp = () => {
     const [logindata, setLogindata] = useState({
@@ -21,6 +22,7 @@ export const SingUp = () => {
         console.log(logindata);
         sentRequest()
     };
+    const navigate = useNavigate();
 
     const sentRequest = async () => {
         const data = {
@@ -31,10 +33,13 @@ export const SingUp = () => {
         await LoginPost(data).then((response) => {
             console.log(response.data);
             if (response.data.success === true) {
-                console.log(response.data.data.token)
-                window.ReactNativeWebView.postMessage('Alert!')
-                localStorage.setItem('token', response.data.data.token)
-                alert("Login Successfull"); 
+                console.log(response.data.data.user)
+                // window.ReactNativeWebView.postMessage('Alert!')
+                const userdataJson= JSON.stringify(response.data.data.user)
+                localStorage.setItem('userData', userdataJson)
+                localStorage.setItem('token',response.data.data.token)
+               
+                navigate('/') 
               
             } else {
                 alert("out side box")

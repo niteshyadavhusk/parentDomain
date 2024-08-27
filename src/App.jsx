@@ -10,6 +10,7 @@ import { SpeechToText } from './Components/SpeechToText';
 import { Nav } from './Components/Nav';
 import { WebViewForm } from './Components/WebViewForm';
 import { SingUp } from './Pages/SingUp';
+import Router from './Routing/Routing';
 
 
 
@@ -72,12 +73,12 @@ function App() {
        
 //     </>
 
-<BrowserRouter>
-<Routes>
- {environment==="Chrome" ? <Route path='/' element={<SingUp/>}/>:<Route path='/' element={<Nav/>}/>}
-  <Route path='/speechTotext' element={<SpeechToText/>}/>
-</Routes>
-</BrowserRouter>
+<div>
+{environment==="Chrome" ? <SingUp/>:<Router/>}
+  
+</div>
+ 
+
   )
 }
 
