@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const LoginPost = async(data)=>{
     
-    let res = await axios.post("http://localhost:3000/api/v1/login",data)
+    let res = await axios.post("https://fieldamangementqa-g3bwf4hseta9gtbm.centralindia-01.azurewebsites.net/api/v1/login",data)
     return res
 }
 
