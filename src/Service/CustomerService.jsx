@@ -13,7 +13,7 @@ console.log(getHeaderConfig());
 export const findBysearch = async (firstName) => {
 
     try {
-        let res = await axios.post("http://localhost:3000/api/v1/getcustomerbycrnorname", firstName, getHeaderConfig())
+        let res = await axios.post("https://fieldamangementqa-g3bwf4hseta9gtbm.centralindia-01.azurewebsites.net/api/v1/getcustomerbycrnorname", firstName, getHeaderConfig())
         return res;
     } catch (error) {
         console.log(error)
